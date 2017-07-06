@@ -63,19 +63,20 @@
 
 <body>
 
-<!-- Preloader -->
+<!-- PreLoader -->
 <div class="page-preloader preloader-wrapp">
     <img src="../assets/images/logo.png" alt="">
     <div class="preloader"></div>
 </div>
 
-<!-- /Preloader -->
+<!-- /PreLoader -->
 
 <!-- Navbar -->
 <nav class="navbar-youplay navbar navbar-default">
 
-    <%@include file="../include/menu.jsp"%>
+    <%@include file="../include/menu.jsp"%>                             <!-- INCLUDE -->
 </nav>
+<!-- Navbar -->
 
 <div>
     <div class="wrapper">

@@ -10,10 +10,7 @@
         <ul class="nav navbar-nav">
 
             <li><a href="#!" style="font-size: 25px;"></a></li>
-            <li><a href="#!" style="font-size: 25px;"></a></li>
-            <li><a href="#!" style="font-size: 25px;"></a></li>
-            <li><a href="#!" style="font-size: 25px;"></a></li>
-            <li><a href="#!" style="font-size: 25px;"></a></li>
+            <li><a href="#!" style="font-size: 25px;"></a></li>c
 
             <li>
                 <a href="#!" style="font-size: 25px;">User <span class="label">games</span></a>
@@ -25,6 +22,10 @@
 
             <li>
                 <a href="questionList?page=list" style="font-size: 25px;">Question <span class="label">quiz</span></a>
+            </li>
+
+            <li>
+                <a href="" style="font-size: 25px;">Quiz <span class="label"></span></a>
             </li>
 
         </ul>
