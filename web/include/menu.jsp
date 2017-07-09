@@ -10,22 +10,25 @@
         <ul class="nav navbar-nav">
 
             <li><a href="#!" style="font-size: 25px;"></a></li>
-            <li><a href="#!" style="font-size: 25px;"></a></li>c
+            <li><a href="#!" style="font-size: 25px;"></a></li>
 
             <li>
                 <a href="#!" style="font-size: 25px;">User <span class="label">games</span></a>
             </li>
+
+            <c:if test="${sessionScope.business.role=='admin'}">
 
             <li>
                 <a href="businessList?page=list" style="font-size: 25px;">Business<span class="label">news</span></a>
             </li>
 
             <li>
-                <a href="questionList?page=list" style="font-size: 25px;">Question <span class="label">quiz</span></a>
+                <a href="questionList?page=list" style="font-size: 25px;">Question <span class="label"></span></a>
             </li>
 
+            </c:if>
             <li>
-                <a href="" style="font-size: 25px;">Quiz <span class="label"></span></a>
+                <a href="" style="font-size: 25px;">Play<span class="label">Quiz</span></a>
             </li>
 
         </ul>

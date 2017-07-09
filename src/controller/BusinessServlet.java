@@ -5,6 +5,7 @@ import service.BusinessService;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.util.List;
 
@@ -18,6 +19,17 @@ public class BusinessServlet extends javax.servlet.http.HttpServlet {
         System.out.println("Success");
         String page = request.getParameter("page");
 
+        if(!page.equalsIgnoreCase("login") && !page.equalsIgnoreCase("logout")){
+            HttpSession session = request.getSession(false);
+            Business business = (Business) session.getAttribute("business");
+
+            if (business == null){
+                RequestDispatcher rd = request.getRequestDispatcher("index.jsp");
+                rd.forward(request, response);
+             //   return;
+            }
+        }
+
         if (page.equalsIgnoreCase("login")) {
 
             String name = request.getParameter("username");
@@ -28,6 +40,11 @@ public class BusinessServlet extends javax.servlet.http.HttpServlet {
             System.out.println(password);
 
             if (business != null) {
+
+                HttpSession session = request.getSession(false);
+                session.setAttribute("business",business);
+
+
                 RequestDispatcher rd = request.getRequestDispatcher("business/home.jsp");
                 rd.forward(request, response);
             } else {
@@ -54,6 +71,10 @@ public class BusinessServlet extends javax.servlet.http.HttpServlet {
 
 
         if (page.equalsIgnoreCase("logout")) {
+
+            HttpSession session = request.getSession(false);
+            session.invalidate();
+
             RequestDispatcher rd = request.getRequestDispatcher("index.jsp");
             rd.forward(request, response);
         }
