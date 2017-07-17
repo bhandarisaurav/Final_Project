@@ -100,7 +100,7 @@
             <div>
                 <div class="container align-center">
                     <div class="youplay-form">
-                        <h1 style="text-transform: capitalize;" >Add New  Data</h1>
+                        <h1 style="text-transform: capitalize;" >Add New Data</h1>
 
                         <div class="btn-group social-list dib">
                             <a class="btn btn-default" title="Share on Facebook" href="#!"><i class="fa fa-facebook"></i></a>
@@ -108,8 +108,8 @@
                             <a class="btn btn-default" href="#!" title="Share on Google Plus"><i class="fa fa-google-plus"></i></a>
                         </div>
 
-                        <form method="post" action="adduser">
-                            <input type="hidden" name="page" value="adduser">
+                        <form method="post" action="addBusiness">
+                            <input type="hidden" name="page" value="addBusiness">
                             <div class="youplay-input">
                                 <input type="text" name="username" placeholder="Username" autofocus required="required" />
                             </div>
