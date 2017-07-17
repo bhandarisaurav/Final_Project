@@ -12,21 +12,23 @@
             <li><a href="#!" style="font-size: 15px;"></a></li>
             <li><a href="#!" style="font-size: 15px;"></a></li>
 
-            <li>
-                <a href="userList?page=list" style="font-size: 25px;">User</a>
-            </li>
 
-           <%--// <c:if test="${sessionScope.business.role=='admin'}">--%>
+           <c:if test="${sessionScope.user.role=='admin'}">
+
+               <li>
+                   <a href="userList?page=list" style="font-size: 25px;">User</a>
+               </li>
+
 
             <li>
                 <a href="businessList?page=list" style="font-size: 25px;">Business<span class="label">Data</span></a>
             </li>
 
             <li>
-                <a href="questionList?page=list" style="font-size: 25px;">Question <span class="label"></span></a>
+                <a href="questionList?page=list" style="font-size: 25px;">Question<span class="label"></span></a>
             </li>
 
-            <%--</c:if>--%>
+            </c:if>
             <li>
                 <a href="" style="font-size: 25px;">Play<span class="label">Quiz</span></a>
             </li>

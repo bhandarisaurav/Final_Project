@@ -19,16 +19,16 @@ public class BusinessServlet extends javax.servlet.http.HttpServlet {
         System.out.println("Success");
         String page = request.getParameter("page");
 
-//        if(!page.equalsIgnoreCase("login") && !page.equalsIgnoreCase("logout")){
-//            HttpSession session = request.getSession(false);
-//            Business business = (Business) session.getAttribute("business");
-//
-//            if (business == null){
-//                RequestDispatcher rd = request.getRequestDispatcher("index.jsp");
-//                rd.forward(request, response);
-//             //   return;
-//            }
-//        }
+        if(!page.equalsIgnoreCase("login") && !page.equalsIgnoreCase("logout")){
+            HttpSession session = request.getSession(false);
+            Business business = (Business) session.getAttribute("business");
+
+            if (business == null){
+                RequestDispatcher rd = request.getRequestDispatcher("index.jsp");
+                rd.forward(request, response);
+             //   return;
+            }
+        }
 
 //        if (page.equalsIgnoreCase("login")) {
 //

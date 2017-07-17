@@ -7,6 +7,7 @@ import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.util.List;
 /**
@@ -16,8 +17,19 @@ public class UserServlet extends javax.servlet.http.HttpServlet {
     private Object HttpServletRequest;
 
     protected void doPost(javax.servlet.http.HttpServletRequest request, javax.servlet.http.HttpServletResponse response) throws javax.servlet.ServletException, IOException {
-        //System.out.println("Success");
+        System.out.println("Login Success");
         String page = request.getParameter("page");
+
+        if(!page.equalsIgnoreCase("login") && !page.equalsIgnoreCase("logout")){
+            HttpSession session = request.getSession(false);
+            User user = (User) session.getAttribute("user");
+
+            if (user == null){
+                RequestDispatcher rd = request.getRequestDispatcher("index.jsp");
+                rd.forward(request, response);
+             //   return;
+            }
+        }
 
         if (page.equalsIgnoreCase("login")) {
 
@@ -27,8 +39,13 @@ public class UserServlet extends javax.servlet.http.HttpServlet {
             User user = new UserService().getUser(name, password);
 
             if (user != null) {
+
+                HttpSession session = request.getSession(false);
+                   session.setAttribute("user",user);
+
                 RequestDispatcher rd = request.getRequestDispatcher("user/home.jsp");
                 rd.forward(request, response);
+
             } else {
                 RequestDispatcher rd = request.getRequestDispatcher("index.jsp");
                 rd.forward(request, response);
@@ -44,6 +61,11 @@ public class UserServlet extends javax.servlet.http.HttpServlet {
 //            }
         }
         if (page.equalsIgnoreCase("logout")) {
+
+            HttpSession session = request.getSession(false);
+            session.invalidate();
+
+
             RequestDispatcher rd = request.getRequestDispatcher("index.jsp");
             rd.forward(request, response);
         }

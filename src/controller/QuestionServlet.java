@@ -9,6 +9,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.util.List;
 
@@ -21,6 +22,17 @@ public class QuestionServlet extends HttpServlet {
 
         System.out.println("Success Question");
         String page = request.getParameter("page");
+
+        if(!page.equalsIgnoreCase("login") && !page.equalsIgnoreCase("logout")){
+            HttpSession session = request.getSession(false);
+            Question question = (Question) session.getAttribute("question");
+
+            if (question == null){
+                RequestDispatcher rd = request.getRequestDispatcher("index.jsp");
+                rd.forward(request, response);
+                //   return;
+            }
+        }
 
         if (page.equalsIgnoreCase("list")) {
             redirectToList(request, response);
