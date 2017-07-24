@@ -52,6 +52,7 @@
         <div>
           <div class="container align-center">
             <div class="youplay-form">
+              <h1>${msg}</h1>
               <h1>Login</h1>
 
               <div class="btn-group social-list dib">

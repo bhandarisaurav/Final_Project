@@ -1,3 +1,5 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+
 <div class="container">
 
     <div class="navbar-header">
@@ -13,25 +15,25 @@
             <li><a href="#!" style="font-size: 15px;"></a></li>
 
 
-           <%--<c:if test="${sessionScope.user.role=='admin'}">--%>
+           <c:if test="${sessionScope.user.role=='admin'}">
 
                <li>
-                   <a href="userList?page=list" style="font-size: 25px;">User</a>
+                   <a href="userList?page=list" style="font-size: 23px;">User</a>
                </li>
 
 
             <li>
-                <a href="businessList?page=list" style="font-size: 25px;">Business</a>
+                <a href="businessList?page=list" style="font-size: 23px;">Business</a>
             </li>
 
             <li>
-                <a href="questionList?page=list" style="font-size: 25px;">Question</a>
+                <a href="questionList?page=list" style="font-size: 23px;">Question</a>
             </li>
+           </c:if>
 
-            <%--</c:if>--%>
 
             <li>
-                <a href="" style="font-size: 25px;">Play<span class="label">Quiz</span></a>
+                <a href="getQuestion?page=quiz&id=0" style="font-size: 24px;">Play<span class="label">Quiz</span></a>
             </li>
 
         </ul>

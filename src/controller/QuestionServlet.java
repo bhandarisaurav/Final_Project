@@ -23,16 +23,16 @@ public class QuestionServlet extends HttpServlet {
         System.out.println("Success Question");
         String page = request.getParameter("page");
 
-        if(!page.equalsIgnoreCase("login") && !page.equalsIgnoreCase("logout")){
-            HttpSession session = request.getSession(false);
-            Question question = (Question) session.getAttribute("question");
-
-            if (question == null){
-                RequestDispatcher rd = request.getRequestDispatcher("index.jsp");
-                rd.forward(request, response);
-                //   return;
-            }
-        }
+//        if(!page.equalsIgnoreCase("login") && !page.equalsIgnoreCase("logout")){
+//            HttpSession session = request.getSession(false);
+//            Question question = (Question) session.getAttribute("question");
+//
+//            if (question == null){
+//                RequestDispatcher rd = request.getRequestDispatcher("index.jsp");
+//                rd.forward(request, response);
+//                //   return;
+//            }
+//        }
 
         if (page.equalsIgnoreCase("list")) {
             redirectToList(request, response);
@@ -73,6 +73,8 @@ public class QuestionServlet extends HttpServlet {
             rd.forward(request, response);
         }
 
+
+
         if (page.equalsIgnoreCase("update")) {
 
             Question question = new Question();
@@ -90,15 +92,9 @@ public class QuestionServlet extends HttpServlet {
             redirectToList(request, response);
         }
 
+
+
     }
-    
-    
-    
-    
-    
-    
-    
-    
 
     private void redirectToList(javax.servlet.http.HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         List<Question> questionList = new QuestionService().getQuestionList();

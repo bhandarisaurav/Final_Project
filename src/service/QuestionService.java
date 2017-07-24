@@ -1,5 +1,6 @@
 package service;
 
+import com.mysql.jdbc.StringUtils;
 import domain.Question;
 import utils.DatabaseConnection;
 
@@ -97,7 +98,7 @@ public class QuestionService {
     }
 
     public void delete(int id) {
-        String query = "DELETE FROM `question_data` WHERE id = ?;";
+        String query = "DELETE FROM `question_data` WHERE id = ?";
         PreparedStatement pstm = new DatabaseConnection().getPreparedStatement(query);
         try {
             pstm.setInt(1,id);
@@ -137,4 +138,51 @@ public class QuestionService {
             e.printStackTrace();
         }
     }
+
+    public Question getRow(int id)
+    {
+        Question question = new Question();
+        String query = "select * from question_data where id > ? limit 1";
+        PreparedStatement pstm = new DatabaseConnection().getPreparedStatement(query);
+        try {
+            pstm.setInt(1,id);
+            ResultSet rs = pstm.executeQuery();
+
+            while(rs.next())
+            {
+                question.setId(rs.getInt("id"));
+                question.setQuestion(rs.getString("question"));
+                question.setOption1(rs.getString("option1"));
+                question.setOption2(rs.getString("option2"));
+                question.setOption3(rs.getString("option3"));
+                question.setOption4(rs.getString("option4"));
+                question.setCorrect_ans(rs.getString("correct_ans"));
+                question.setCategory(rs.getString("category"));
+                System.out.println(rs.getString("correct_ans"));
+                System.out.println(question.getQuestion());
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return question;
+
+
+    }
+
+    public int  getMaxId()
+    {
+        String query = "select max(id) as max from question_data";
+        PreparedStatement pstm = new DatabaseConnection().getPreparedStatement(query);
+        try {
+            ResultSet rs = pstm.executeQuery();
+            rs.next();
+            return rs.getInt("max");
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return 0;
+        }
+    }
 }
+
+

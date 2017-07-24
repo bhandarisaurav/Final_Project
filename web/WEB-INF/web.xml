@@ -144,8 +144,16 @@
 		<url-pattern>/updateQuestion</url-pattern>
 	</servlet-mapping>
 
-		 
-		 
-		 
-		 
+	<servlet>
+		<servlet-name>QuizServlet</servlet-name>
+		<servlet-class>controller.QuizServlet</servlet-class>
+	</servlet>
+
+	<servlet-mapping>
+		<servlet-name>QuizServlet</servlet-name>
+		<url-pattern>/getQuestion</url-pattern>
+	</servlet-mapping>
+
+
+
 </web-app>
