@@ -39,6 +39,7 @@ public class QuizServlet extends HttpServlet {
 
                 if (clicked.equalsIgnoreCase(correct)) {
                     marks = 10;
+                    System.out.println(marks);
                 }
                 // Insert question, correct, clicked, marks, userid
                 getQuestion(request, response, id);
@@ -54,7 +55,7 @@ public class QuizServlet extends HttpServlet {
         if (id == max) {
             //Display result
             System.out.println("Null");
-            request.setAttribute("msg","Quiz Finished!!");
+            request.setAttribute("msg","Sakiyo Muji Quiz!!");
             RequestDispatcher rd = request.getRequestDispatcher("index.jsp");
             rd.forward(request, response);
         }

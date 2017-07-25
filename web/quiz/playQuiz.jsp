@@ -82,6 +82,7 @@
 
 <center>
     <form method="post" action="getQuestion">
+
         <input type="hidden" name="id" value="${question.id}">
         <input type="hidden" name="page" value="quiz">
         <input type="hidden" name="correct" value="${question.correct_ans}">
@@ -91,13 +92,14 @@
             <div id="question">
                 <h2>${question.question}</h2>
 
-                <input id="choices-1" type="radio" name="option" value="${question.option1}">
-                <label for="choices-1">${question.option1}</label><input id="choices-2" type="radio" name="option" value="${question.option2}"><label for="choices-2">${question.option2}</label>
-                <input id="choices-3" type="radio" name="option" value="${question.option3}">
-                <label for="choices-3">${question.option3}</label><input id="choices-4" type="radio" name="option" value="${question.option4}"><label for="choices-4">${question.option4}</label>
+                <input id="choices-1" type="radio" name="option" value="${question.option1}" onClick="document.getElementById('subutton').disabled = false" >
+                <label for="choices-1">${question.option1}</label><input id="choices-2" type="radio" name="option" value="${question.option2}" onClick="document.getElementById('subutton').disabled = false" ><label for="choices-2">${question.option2}</label>
+                <input id="choices-3" type="radio" name="option" value="${question.option3}" onClick="document.getElementById('subutton').disabled = false" >
+                <label for="choices-3">${question.option3}</label><input id="choices-4" type="radio" name="option" value="${question.option4}" onClick="document.getElementById('subutton').disabled = false" ><label for="choices-4">${question.option4}</label>
+
             </div>
 
-            <input class="butn" type="submit" value="Next">
+            <input id = "subutton" class="butn" type="submit" value="Next">
 
         </div>
     </form>
