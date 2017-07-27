@@ -1,6 +1,8 @@
 package controller;
 
+import domain.Quiz;
 import domain.User;
+import service.QuizService;
 import service.UserService;
 
 import javax.servlet.RequestDispatcher;
@@ -20,16 +22,18 @@ public class UserServlet extends javax.servlet.http.HttpServlet {
         System.out.println("Login Success");
         String page = request.getParameter("page");
 
-        if(!page.equalsIgnoreCase("login") && !page.equalsIgnoreCase("logout")){
-            HttpSession session = request.getSession(false);
-            User user = (User) session.getAttribute("user");
+//        if(!page.equalsIgnoreCase("login") && !page.equalsIgnoreCase("logout")){
+//            HttpSession session = request.getSession(false);
+//            User user = (User) session.getAttribute("user");
+//
+//            if (user == null){
+//                RequestDispatcher rd = request.getRequestDispatcher("index.jsp");
+//                rd.forward(request, response);
+//             //   return;
+//            }
+//        }
 
-            if (user == null){
-                RequestDispatcher rd = request.getRequestDispatcher("index.jsp");
-                rd.forward(request, response);
-             //   return;
-            }
-        }
+        UserServlet.checkSession(request, response, page);
 
         if (page.equalsIgnoreCase("login")) {
 
@@ -41,12 +45,18 @@ public class UserServlet extends javax.servlet.http.HttpServlet {
             if (user != null) {
 
                 HttpSession session = request.getSession(false);
-                   session.setAttribute("user",user);
+                session.setAttribute("uid", user.getId());
+                session.setAttribute("user",user);
+                request.setAttribute("msg", "Login Success!");
+
+                QuizService quizService = new QuizService();
+                quizService.deleteData();
 
                 RequestDispatcher rd = request.getRequestDispatcher("user/home.jsp");
                 rd.forward(request, response);
 
             } else {
+                request.setAttribute("msg","Invalid Credentials");
                 RequestDispatcher rd = request.getRequestDispatcher("index.jsp");
                 rd.forward(request, response);
             }
@@ -129,7 +139,27 @@ public class UserServlet extends javax.servlet.http.HttpServlet {
         rd.forward(request, response);
     }
 
+    public static void checkSession(HttpServletRequest request, HttpServletResponse response, String page){
+        if(page==null){
+            page = "xyz";
+        }
+        if(!page.equalsIgnoreCase("login")){
+            HttpSession session = request.getSession(false);
+            User user = (User) session.getAttribute("user");
+            if(user==null){
+                String message = "Login First !!!";
+                try {
+                    request.setAttribute("msg",message);
+                    request.getRequestDispatcher("index.jsp").forward(request,response);
+                } catch (ServletException e) {
+                    e.printStackTrace();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
 
+        }
+    }
 
     protected void doGet(javax.servlet.http.HttpServletRequest request, javax.servlet.http.HttpServletResponse response) throws javax.servlet.ServletException, IOException {
         doPost(request,response);

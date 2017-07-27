@@ -1,8 +1,10 @@
 package controller;
 
 import domain.Question;
+import domain.Quiz;
 import domain.User;
 import service.QuestionService;
+import service.QuizService;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -12,22 +14,26 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
+import java.util.List;
 
 /**
  * Created by saura on 7/17/2017.
  */
 @WebServlet(name = "QuizServlet")
+
 public class QuizServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+
 
         String page = request.getParameter("page");
         System.out.println(page);
 
+        UserServlet.checkSession(request, response, page);
+
         HttpSession session = request.getSession(false);
-        User user = (User) session.getAttribute("user");
-        int userId = user.getId();
 
         if (page.equalsIgnoreCase("quiz")) {
+
             int id = Integer.parseInt(request.getParameter("id"));
             int marks = 0;
             if (id == 0) {
@@ -37,11 +43,24 @@ public class QuizServlet extends HttpServlet {
                 String clicked = request.getParameter("option");
                 String ques = request.getParameter("question");
 
+                Quiz quiz = new Quiz();
+
                 if (clicked.equalsIgnoreCase(correct)) {
-                    marks = 10;
-                    System.out.println(marks);
+                    quiz.setMarks(50);
+                    System.out.println("------------------------------");
+                    System.out.println(quiz.getMarks());
+                    System.out.println("------------------------------");
+                }else {
+                    quiz.setMarks(0);
                 }
-                // Insert question, correct, clicked, marks, userid
+                quiz.setQuestion(ques);
+                quiz.setCorrect_ans(correct);
+
+                quiz.setUid((Integer) session.getAttribute("uid"));
+
+                quiz.setQid(id);
+                quiz.setUser_ans(clicked);
+                new QuizService().insert(quiz);
                 getQuestion(request, response, id);
 
             }
@@ -50,14 +69,38 @@ public class QuizServlet extends HttpServlet {
     }
 
     private void getQuestion(HttpServletRequest request, HttpServletResponse response, int id) throws ServletException, IOException {
+        HttpSession session = request.getSession(false);
         Question question = new QuestionService().getRow(id);
         int max = new QuestionService().getMaxId();
         if (id == max) {
-            //Display result
-            System.out.println("Null");
-            request.setAttribute("msg","Sakiyo Muji Quiz!!");
-            RequestDispatcher rd = request.getRequestDispatcher("index.jsp");
+
+            //------------------------------------------------------//
+
+            List<Quiz> quizList = new QuizService().getQuizList((Integer) session.getAttribute("uid"));
+            request.setAttribute("quizResult", quizList);
+
+            int total_marks = new QuizService().getTotalMarks((Integer) session.getAttribute("uid"));
+
+            System.out.println(total_marks);
+
+            request.setAttribute("total_marks",total_marks);
+
+            System.out.println(quizList);
+
+            request.setAttribute("msg", "Final Result");
+            List<Question> ques = new QuestionService().getQuestionList();
+
+            request.setAttribute("question", ques) ;
+            RequestDispatcher rd = request.getRequestDispatcher("quiz/quizResult.jsp");
             rd.forward(request, response);
+
+            //------------------------------------------------------//
+
+            //Display result
+//            System.out.println("Null");
+//            request.setAttribute("msg","Quiz Finished!!!!");
+//            RequestDispatcher rd = request.getRequestDispatcher("index.jsp");
+//            rd.forward(request, response);
         }
         request.setAttribute("question", question);
         RequestDispatcher rd = request.getRequestDispatcher("quiz/playQuiz.jsp");

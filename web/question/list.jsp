@@ -85,7 +85,7 @@
     </div>
 
     <table class="tcontainer">
-        <tr style="font-size: 30px;color: #fffc15;">
+        <tr style="font-size: 28px;color: #fffc15;">
             <th>Question</th>
             <th>Option 1</th>
             <th>Option 2</th>

@@ -19,6 +19,8 @@ public class BusinessServlet extends javax.servlet.http.HttpServlet {
         System.out.println("Success");
         String page = request.getParameter("page");
 
+        UserServlet.checkSession(request, response, page);
+
 //        if(!page.equalsIgnoreCase("login") && !page.equalsIgnoreCase("logout")){
 //            HttpSession session = request.getSession(false);
 //            Business business = (Business) session.getAttribute("business");
