@@ -18,12 +18,12 @@ public class UserService {
 
         User user = null;
         String query = "select * from user where name=? and password=?";
+
         PreparedStatement pstm = new DatabaseConnection().getPreparedStatement(query);
         try {
             pstm.setString(1, name);
             pstm.setString(2, password);
             ResultSet rs = pstm.executeQuery();
-
             while (rs.next()) {
 
                 user = new User();
@@ -65,6 +65,7 @@ public class UserService {
     }
 
     public List<User> getUserList() {
+
         List<User> userList = new ArrayList<User>();
 
         String query = "select * from user";
@@ -103,7 +104,7 @@ public class UserService {
     }
 
     public void delete(int id) {
-        String query = "DELETE FROM user WHERE id = ?;";
+        String query = "DELETE FROM user WHERE id = ?";
         PreparedStatement pstm = new DatabaseConnection().getPreparedStatement(query);
         try {
             pstm.setInt(1,id);

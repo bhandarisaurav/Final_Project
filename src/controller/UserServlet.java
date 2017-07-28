@@ -70,6 +70,8 @@ public class UserServlet extends javax.servlet.http.HttpServlet {
 //                rd.forward(request,response);
 //            }
         }
+
+
         if (page.equalsIgnoreCase("logout")) {
 
             HttpSession session = request.getSession(false);

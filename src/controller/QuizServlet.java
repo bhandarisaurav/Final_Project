@@ -77,6 +77,7 @@ public class QuizServlet extends HttpServlet {
             //------------------------------------------------------//
 
             List<Quiz> quizList = new QuizService().getQuizList((Integer) session.getAttribute("uid"));
+
             request.setAttribute("quizResult", quizList);
 
             int total_marks = new QuizService().getTotalMarks((Integer) session.getAttribute("uid"));
