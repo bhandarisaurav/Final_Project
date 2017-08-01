@@ -21,40 +21,6 @@ public class BusinessServlet extends javax.servlet.http.HttpServlet {
 
         UserServlet.checkSession(request, response, page);
 
-//        if(!page.equalsIgnoreCase("login") && !page.equalsIgnoreCase("logout")){
-//            HttpSession session = request.getSession(false);
-//            Business business = (Business) session.getAttribute("business");
-//
-//            if (business == null){
-//                RequestDispatcher rd = request.getRequestDispatcher("index.jsp");
-//                rd.forward(request, response);
-//             //   return;
-//            }
-//        }
-
-//        if (page.equalsIgnoreCase("login")) {
-//
-//            String name = request.getParameter("username");
-//            String password = request.getParameter("password");
-//
-//            Business business = new BusinessService().getBusiness(name, password);
-//            System.out.println(name);
-//            System.out.println(password);
-//
-//            if (business != null) {
-//
-//                HttpSession session = request.getSession(false);
-//                session.setAttribute("business",business);
-//
-//
-//                RequestDispatcher rd = request.getRequestDispatcher("business/home.jsp");
-//                rd.forward(request, response);
-//            } else {
-//                RequestDispatcher rd = request.getRequestDispatcher("index.jsp");
-//                rd.forward(request, response);
-//            }
-//        }
-
 //        if (page.equalsIgnoreCase("register")) {
 //
 //           Business business = new Business();
@@ -69,16 +35,6 @@ public class BusinessServlet extends javax.servlet.http.HttpServlet {
 //            RequestDispatcher rd = request.getRequestDispatcher("index.jsp");
 //            rd.forward(request, response);
 //
-//        }
-//
-//
-//        if (page.equalsIgnoreCase("logout")) {
-//
-//            HttpSession session = request.getSession(false);
-//            session.invalidate();
-//
-//            RequestDispatcher rd = request.getRequestDispatcher("index.jsp");
-//            rd.forward(request, response);
 //        }
 
         if (page.equalsIgnoreCase("navbar")) {
