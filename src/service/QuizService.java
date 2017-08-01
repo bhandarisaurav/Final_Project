@@ -1,6 +1,7 @@
 package service;
 
 import domain.Quiz;
+import domain.Score;
 import utils.DatabaseConnection;
 
 import java.sql.PreparedStatement;
@@ -34,8 +35,6 @@ public class QuizService {
         String query = "select * from quiz_data where uid = ?";
 
         PreparedStatement pstm = new DatabaseConnection().getPreparedStatement(query);
-
-        String optionCorrect = null, optionUser = null;
 
         try {
             pstm.setInt(1,uid);
@@ -114,10 +113,42 @@ public class QuizService {
         return totMarks;
     }
 
+    public static void addScore(String name, int score) {
+        String query = "insert into score (name,score) values(?,?)";
+        PreparedStatement pstm = new DatabaseConnection().getPreparedStatement(query);
+        try {
+            pstm.setString(1, name);
+            pstm.setInt(2, score);
+            pstm.execute();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public List<Score> getScoreList()
+    {
+        List<Score> scoreList = new ArrayList<Score>();
+
+        String query = "select * from score";
+
+        PreparedStatement pstm = new DatabaseConnection().getPreparedStatement(query);
+
+        try {
+
+            ResultSet rs = pstm.executeQuery();
+
+            while (rs.next()) {
+                Score score = new Score();
+                score.setId(rs.getInt("id"));
+                score.setName(rs.getString("name"));
+                score.setScore(rs.getInt("score"));
+                scoreList.add(score);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
 
 
-
-
-
-
+        return scoreList;
+    }
 }

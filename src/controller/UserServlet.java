@@ -1,6 +1,5 @@
 package controller;
 
-import domain.Quiz;
 import domain.User;
 import service.QuizService;
 import service.UserService;
@@ -49,8 +48,16 @@ public class UserServlet extends javax.servlet.http.HttpServlet {
                 session.setAttribute("user",user);
                 request.setAttribute("msg", "Login Success!");
 
+                System.out.println("------------------------------");
+                User user1 =(User) session.getAttribute("user");
+                System.out.println(user1.getName());
+                System.out.println("------------------------------");
+
+
                 QuizService quizService = new QuizService();
                 quizService.deleteData();
+
+                request.setAttribute("name",user1.getName());
 
                 RequestDispatcher rd = request.getRequestDispatcher("user/home.jsp");
                 rd.forward(request, response);
@@ -70,7 +77,18 @@ public class UserServlet extends javax.servlet.http.HttpServlet {
 //                rd.forward(request,response);
 //            }
         }
+        if (page.equalsIgnoreCase("register")) {
 
+            User user = new User();
+            user.setName(request.getParameter("username"));
+            user.setPassword(request.getParameter("password"));
+            user.setRole(request.getParameter("role"));
+
+            new UserService().register(user);
+            RequestDispatcher rd = request.getRequestDispatcher("index.jsp");
+            rd.forward(request, response);
+
+        }
 
         if (page.equalsIgnoreCase("logout")) {
 

@@ -87,34 +87,27 @@
               <h1>Sign Up</h1>
 
               <div class="btn-group social-list dib">
-                <a class="btn btn-default" title="Share on Facebook" href="#!"><i class="fa fa-facebook"></i></a>
+                <a class="btn btn-default" title="Share on Facebook" href="http://facebook.com/sauravbh1"><i class="fa fa-facebook"></i></a>
                 <a class="btn btn-default" href="#!" title="Share on Twitter"><i class="fa fa-twitter"></i></a>
                 <a class="btn btn-default" href="#!" title="Share on Google Plus"><i class="fa fa-google-plus"></i></a>
               </div>
 
               <form method="post" action="register">
                 <input type="hidden" name="page" value="register" />
+
                 <div class="youplay-input">
                 <input type="text" name="username" placeholder="Username" autofocus required="required" />
                 </div>
+
                 <div class="youplay-input">
                 <input type="password" name="password" placeholder="Password" required="required" />
                 </div>
 
 				<div class="youplay-input">
-                  <input type="text" name="address" onkeypress="return alpha(event,letters)"  placeholder="Address" title="Enter Valid Address" required="required" />
+                  <input type="text" name="role" onkeypress="return alpha(event,letters)"  placeholder="Role" title="Enter Valid Role" required="required" />
                 </div>
 
-				<div class="youplay-input">
-                  <input type="text" id="datepicker" name="established_date" placeholder="Established Date">
-                </div>
-
-				<div class="youplay-input">
-                  <input type="number" min="0" name="gross_income" placeholder="Gross Income" required="required" />
-                </div>
-
-
-                <button class="btn btn-default db" type="submit" value="register">Register</button>
+				<button class="btn btn-default db" type="submit" value="register">Register</button>
               </form>
             </div>
           </div>

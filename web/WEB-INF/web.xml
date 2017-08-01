@@ -17,6 +17,11 @@
 
 	<servlet-mapping>
 		<servlet-name>user</servlet-name>
+		<url-pattern>/register</url-pattern>
+	</servlet-mapping>
+
+	<servlet-mapping>
+		<servlet-name>user</servlet-name>
 		<url-pattern>/logout</url-pattern>
 	</servlet-mapping>
 
@@ -62,10 +67,10 @@
 		<!--<url-pattern>/login</url-pattern>-->
 	<!--</servlet-mapping>-->
 
-	<servlet-mapping>
-		<servlet-name>business</servlet-name>
-		<url-pattern>/register</url-pattern>
-	</servlet-mapping>
+	<!--<servlet-mapping>-->
+		<!--<servlet-name>business</servlet-name>-->
+		<!--<url-pattern>/register</url-pattern>-->
+	<!--</servlet-mapping>-->
 
 	<!--<servlet-mapping>-->
 		<!--<servlet-name>business</servlet-name>-->
@@ -153,6 +158,13 @@
 		<servlet-name>QuizServlet</servlet-name>
 		<url-pattern>/getQuestion</url-pattern>
 	</servlet-mapping>
+
+
+	<servlet-mapping>
+		<servlet-name>QuizServlet</servlet-name>
+		<url-pattern>/getScore</url-pattern>
+	</servlet-mapping>
+
 
 
 

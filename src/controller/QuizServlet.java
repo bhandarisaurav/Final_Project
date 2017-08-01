@@ -2,6 +2,7 @@ package controller;
 
 import domain.Question;
 import domain.Quiz;
+import domain.Score;
 import domain.User;
 import service.QuestionService;
 import service.QuizService;
@@ -66,6 +67,11 @@ public class QuizServlet extends HttpServlet {
             }
 
         }
+
+        if(page.equalsIgnoreCase("score")){
+            quizScore(request, response);
+
+        }
     }
 
     private void getQuestion(HttpServletRequest request, HttpServletResponse response, int id) throws ServletException, IOException {
@@ -75,6 +81,9 @@ public class QuizServlet extends HttpServlet {
         if (id == max) {
 
             //------------------------------------------------------//
+
+
+
 
             List<Quiz> quizList = new QuizService().getQuizList((Integer) session.getAttribute("uid"));
 
@@ -91,7 +100,26 @@ public class QuizServlet extends HttpServlet {
             request.setAttribute("msg", "Final Result");
             List<Question> ques = new QuestionService().getQuestionList();
 
-            request.setAttribute("question", ques) ;
+System.out.println("------------------------------");
+
+            User user =(User) session.getAttribute("user");
+
+//------------------------------------------------------//
+
+            String name= user.getName();
+            Integer score = total_marks;
+
+            System.out.println(name);
+            System.out.println(score);
+
+            QuizService.addScore(name,score);
+//------------------------------------------------------//
+
+ System.out.println("------------------------------");
+
+
+            request.setAttribute("question", ques);
+            request.setAttribute("name",user.getName());
             RequestDispatcher rd = request.getRequestDispatcher("quiz/quizResult.jsp");
             rd.forward(request, response);
 
@@ -104,7 +132,17 @@ public class QuizServlet extends HttpServlet {
 //            rd.forward(request, response);
         }
         request.setAttribute("question", question);
+
         RequestDispatcher rd = request.getRequestDispatcher("quiz/playQuiz.jsp");
+        rd.forward(request, response);
+    }
+
+    private void quizScore(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        List<Score> scoreList = new QuizService().getScoreList();
+
+        request.setAttribute("scoreList", scoreList);
+
+        RequestDispatcher rd = request.getRequestDispatcher("quiz/quizScore.jsp");
         rd.forward(request, response);
     }
 

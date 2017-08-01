@@ -11,9 +11,6 @@ public class Quiz {
     String question;
     String correct_ans;
 
-    String correctAnswerSt;
-    String chosenAnswerSt;
-
     public int getUid() { return uid; }
 
     public void setUid(int uid) { this.uid = uid; }
@@ -38,11 +35,4 @@ public class Quiz {
 
     public void setCorrect_ans(String correctAns) { this.correct_ans = correctAns;  }
 
-    public String getCorrectAnswerSt() { return correctAnswerSt;  }
-
-    public void setCorrectAnswerSt(String correctAnswerSt) { this.correctAnswerSt = correctAnswerSt; }
-
-    public String getChosenAnswerSt() { return chosenAnswerSt; }
-
-    public void setChosenAnswerSt(String chosenAnswerSt) { this.chosenAnswerSt = chosenAnswerSt; }
 }

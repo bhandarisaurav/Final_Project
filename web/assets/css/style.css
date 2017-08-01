@@ -65,7 +65,7 @@ body {
 #question h2 {
   margin-bottom: 16px;
   font-weight: 600;
-  font-size: 20px;
+  font-size: 40px;
 }
 
 #question input[type=radio] {
@@ -81,6 +81,7 @@ body {
   width: calc(50% - 8px);
   min-width: 100px;
   cursor: pointer;
+  font-size: 22px;
 }
 
 #question label:hover {

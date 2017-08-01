@@ -1,114 +1,179 @@
+<!DOCTYPE html>
+<!--
+Name: Youplay - Game Template based on Bootstrap
+Version: 3.0.0
+Author: nK
+Website: http://nkdev.info
+Support: http://nk.ticksy.com
+Purchase: http://themeforest.net/item/youplay-game-template-based-on-bootstrap/11306207?ref=_nK
+License: You must have a valid license purchased only from themeforest(the above link) in order to legally use the theme for your project.
+Copyright 2016.
+-->
 <html>
+
+
+<!-- Mirrored from html.nkdev.info/youplay/dark/ by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 26 May 2016 12:39:47 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=UTF-8" /><!-- /Added by HTTrack -->
 <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
-    <title>Demo Project</title>
-    <link href="../css/templatemo_style.css" rel="stylesheet" type="text/css"/>
-    <link href="../css/table.css" rel="stylesheet" type="text/css"/>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>youplay</title>
+
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+
+    <!-- Icon -->
+    <link rel="icon" type="image/png" href="../assets/images/icon.png">
+    <!-- Google Fonts -->
+
+    <link href='http://fonts.googleapis.com/css?family=Lato:300,400,700' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    <!-- Bootstrap -->
+    <link rel="stylesheet" type="text/css" href="../assets/bower_components/bootstrap/dist/css/bootstrap.min.css" />
+
+    <!-- FontAwesome -->
+    <link rel="stylesheet" type="text/css" href="../assets/bower_components/font-awesome/css/font-awesome.min.css" />
+
+    <!-- Owl Carousel -->
+    <link rel="stylesheet" type="text/css" href="../assets/bower_components/owl.carousel/dist/assets/owl.carousel.min.css" />
+    <!-- Youplay -->
+
+    <link rel="stylesheet" type="text/css" href="../assets/youplay/css/youplay.min.css" />
+
+    <!-- Custom Styles -->
+    <link rel="stylesheet" type="text/css" href="../assets/css/style_table.css" />
+    <!-- RTL (uncomment this to enable RTL support) -->
+    <!-- <link rel="stylesheet" type="text/css" href="../assets/youplay/css/youplay-rtl.css" /> -->
 
     <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+    <style>
+
+        .wrapper {
+            text-align: right;
+        }
+
+        .button {
+            margin-right: 100px;
+        }
+    </style>
+
 
 </head>
+
+
+
 <body>
 
-<div id="templatemo_wrapper_outter">
-
-<div id="templatemo_wrapper_inner">
-
-<div id="templatemo_header">
-    This is Header
+<!-- Preloader -->
+<div class="page-preloader preloader-wrapp">
+    <img src="../assets/images/logo.png" alt="">
+    <div class="preloader"></div>
 </div>
-<!-- end of templatemo_header -->
 
-<div id="templatemo_menu">
+<!-- /Preloader -->
 
-    <ul>
-        <li><a href="#" class="current">Home</a></li>
-        <li><a href="userList?page=list">User</a></li>
-        <li><a href="#">Company</a></li>
-        <li><a href="logout?page=logout">Logout</a></li>
-    </ul>
+<!-- Navbar -->
+<nav class="navbar-youplay navbar navbar-default">
 
-</div>
-<!-- end of templatemo_menu -->
+    <%@include file="../include/menu.jsp"%>                             <!-- INCLUDE -->
 
-<div id="templatemo_content_wrapper">
+</nav>
+<!-- /Navbar -->
 
-<div id="templatemo_sidebar_wrapper">
+<div>
 
-    <div id="templatemo_sidebar_top"></div>
-    <div id="templatemo_sidebar">
-
-        <h2>Our Services</h2>
-
-        <ul class="categories_list">
-            <li><a href="#">Test1</a></li>
-            <li><a href="#">Test2</a></li>
-        </ul>
-
-        <div class="cleaner_h30"></div>
-
+    <div class="wrapper">
+        <a href="userForm?page=userForm">
+            <button class="button btn btn-success" style="font-size: 25px;">Add New Data</button></a>
     </div>
-    <div id="templatemo_sidebar_bottom"></div>
+    <table class="tcontainer">
+        <tr style="font-size: 30px;color: #fffc15;">               
+            <th>User Name</th>               
+            <th>Password</th>               
+            <th>Role</th>               
+            <th>Edit</th>               
+            <th>Delete</th>             
+        </tr>
 
-</div>
-
-
-<div id="templatemo_content">
-
-<div class="content_section">
-
-    <h2><a href="userForm?page=userForm">Add New User</a></h2>
-
-<table id="t01">
- 
-<tr>
-       
-    <th>User Name</th>
-       
-    <th>Password</th>
-       
-    <th>Role</th>
-       
-    <th>Edit</th>
-       
-    <th>Delete</th>
-     
-</tr>
-
-<c:forEach items="${userList}" var="user">
-    <tr>
-        <td>${user.name}</td>
-           
-        <td>${user.password}</td>
-           
-        <td>${user.role}</td>
-           
-        <td><a href="editUser?page=edit&id=${user.id}">Edit</a></td>
-           
-        <td><a href="deleteuser?page=deleteuser&id=${user.id}">Delete</a></td>
-    </tr>
-</c:forEach>
-
+            <c:forEach items="${userList}" var="user">
+                <tr style="font-size: 19px;">
+                    <td>${user.name}</td>
+                       
+                    <td>${user.password}</td>
+                       
+                    <td>${user.role}</td>
+                       
+                    <td><a href="editUser?page=edit&id=${user.id}">Edit</a></td>
+                       
+                    <td><a href="deleteuser?page=deleteuser&id=${user.id}" onclick="return confirm('Are you Sure');">Delete</a></td>
+                </tr>
+            </c:forEach>
 
     </table>
 
-    </div>
+</div>
 
-    </div>
+<!-- jQuery -->
+<script type="text/javascript" src="../assets/bower_components/jquery/dist/jquery.min.js"></script>
 
-    <div class="cleaner"></div>
 
-    </div> <!-- end of templatemo_content_wrapper -->
+<!-- Hexagon Progress -->
+<script type="text/javascript" src="../assets/bower_components/HexagonProgress/jquery.hexagonprogress.min.js"></script>
 
-    <div id="templatemo_footer">
 
-        This is Footer
-    </div>
-    <!-- end of footer -->
+<!-- Bootstrap -->
+<script type="text/javascript" src="../assets/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
 
-    </div> <!-- end of templatemo_wrapper_inner -->
+<!-- Jarallax -->
+<script type="text/javascript" src="../assets/bower_components/jarallax/dist/jarallax.min.js"></script>
 
-    </div> <!-- end of templatemo_wrapper_outter -->
+<!-- Smooth Scroll -->
+<script type="text/javascript" src="../assets/bower_components/smoothscroll-for-websites/SmoothScroll.js"></script>
 
-    </body>
-    </html>
+<!-- Owl Carousel -->
+<script type="text/javascript" src="../assets/bower_components/owl.carousel/dist/owl.carousel.min.js"></script>
+
+<!-- Countdown -->
+<script type="text/javascript" src="../assets/bower_components/jquery.countdown/dist/jquery.countdown.min.js"></script>
+<!-- Youplay -->
+<script type="text/javascript" src="../assets/youplay/js/youplay.min.js"></script>
+
+<!-- init youplay -->
+<script>
+    if(typeof youplay !== 'undefined') {
+        youplay.init({
+            // enable parallax
+            parallax:         true,
+
+            // set small navbar on load
+            navbarSmall:      false,
+
+            // enable fade effect between pages
+            fadeBetweenPages: true,
+
+            // twitter and instagram php paths
+            php: {
+                twitter: './php/twitter/tweet.php',
+                instagram: './php/instagram/instagram.php'
+            }
+        });
+    }
+</script>
+
+
+<script type="text/javascript">
+    $(".countdown").each(function() {
+        $(this).countdown($(this).attr('data-end'), function(event) {
+            $(this).text(
+                event.strftime('%D days %H:%M:%S')
+            );
+        });
+    })
+</script>
+
+
+</body>
+</html>
+

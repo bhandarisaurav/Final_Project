@@ -42,6 +42,27 @@ public class UserService {
         return user;
     }
 
+    public void register(User user) {
+        String query = "insert into user (name,password,role) values (?,?,?)";
+        PreparedStatement pstm = new DatabaseConnection().getPreparedStatement(query);
+        try {
+            pstm.setString(1, user.getName());
+            pstm.setString(2, user.getPassword());
+            pstm.setString(3,user.getRole());
+
+            pstm.execute();
+
+            System.out.println("----------------------");
+            System.out.println(user.getName());
+            System.out.println(user.getPassword());
+            System.out.println(user.getRole());
+            System.out.println("----------------------");
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
     public User getUser(int id) {
         User user = null;
         String query = "select * from user where id=?";

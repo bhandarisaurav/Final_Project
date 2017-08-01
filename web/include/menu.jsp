@@ -14,7 +14,6 @@
             <li><a href="#!" style="font-size: 15px;"></a></li>
             <li><a href="#!" style="font-size: 15px;"></a></li>
 
-
            <c:if test="${sessionScope.user.role=='admin'}">
 
                <li>
@@ -36,14 +35,20 @@
                 <a href="getQuestion?page=quiz&id=0" style="font-size: 24px;">Play<span class="label">Quiz</span></a>
             </li>
 
+            <li>
+                <a href="getScore?page=score" style="font-size: 23.5px;">Scores</a>
+            </li>
+
         </ul>
 
 
         <ul class="nav navbar-nav navbar-right">
 
             <li>
-                <a href="#!" style="font-size: 25px;">Saurav Bhandari  <span class="badge bg-default">529</span></span>
-                    <span class="label" style="font-size: 16px;">Deerwalk Institute of Technology</span></a>
+                <a href="#!" style="font-size: 25px; color: #ff7b28;">Hello ${sessionScope.user.name}</a>
+                    <%--<span class="badge bg-default">529</span>--%>
+
+                    <%--<span class="label" style="font-size: 16px;">Deerwalk Institute of Technology</span>--%>
             </li>
 
             <li>

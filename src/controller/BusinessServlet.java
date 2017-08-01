@@ -82,7 +82,7 @@ public class BusinessServlet extends javax.servlet.http.HttpServlet {
 //        }
 
         if (page.equalsIgnoreCase("navbar")) {
-            RequestDispatcher rd = request.getRequestDispatcher("business/home.jsp");
+            RequestDispatcher rd = request.getRequestDispatcher("user/home.jsp");
             rd.forward(request, response);
         }
 

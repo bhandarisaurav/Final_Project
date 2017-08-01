@@ -82,8 +82,8 @@ Copyright 2016.
             <div>
                 <div class="container" style="text-align:center;">
                     <h1>Menu</h1>
-                    <a class="btn btn-lg" href="#!" style="font-size: 2.2em;">Purchase</a><br><br>
-                    <a class="btn btn-lg" href="#!" style="font-size: 2.2em;">Purchase</a><br>
+                    <a class="btn btn-lg" href="questionForm?page=questionForm" style="font-size: 2.2em;">Add New Question</a><br><br>
+                    <a class="btn btn-lg" href="getQuestion?page=quiz&id=0" style="font-size: 2.2em;">Play Quiz</a><br>
                 </div>
             </div>
         </div>

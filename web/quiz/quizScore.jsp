@@ -1,23 +1,21 @@
+<%@ page import="domain.Quiz" %><%--
+  Created by IntelliJ IDEA.
+  User: User
+  Date: 2/22/2017
+  Time: 9:01 PM
+  To change this template use File | Settings | File Templates.
+--%>
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+
 <!DOCTYPE html>
-<!--
-Name: Youplay - Game Template based on Bootstrap
-Version: 3.0.0
-Author: nK
-Website: http://nkdev.info
-Support: http://nk.ticksy.com
-Purchase: http://themeforest.net/item/youplay-game-template-based-on-bootstrap/11306207?ref=_nK
-License: You must have a valid license purchased only from themeforest(the above link) in order to legally use the theme for your project.
-Copyright 2016.
--->
 <html>
 
 
-<!-- Mirrored from html.nkdev.info/youplay/dark/ by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 26 May 2016 12:39:47 GMT -->
-<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=UTF-8" /><!-- /Added by HTTrack -->
+<meta http-equiv="content-type" content="text/html;charset=UTF-8" /><!-- /Added by HTTrack -->
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>youplay</title>
+    <title>List</title>
 
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -57,6 +55,23 @@ Copyright 2016.
         .button {
             margin-right: 100px;
         }
+
+        .smallCell
+        {
+            width: 1px;
+            white-space: nowrap;
+        }
+
+        .tcontainer {
+            text-align: left;
+            overflow: hidden;
+            width: 70%;
+            margin: 0 auto;
+            display: table;
+            padding: 0 0 8em 0;
+        }
+
+
     </style>
 
 
@@ -66,51 +81,45 @@ Copyright 2016.
 
 <body>
 
-<!-- Preloader -->
+<!-- PreLoader -->
 <div class="page-preloader preloader-wrapp">
     <img src="../assets/images/logo.png" alt="">
     <div class="preloader"></div>
 </div>
 
-<!-- /Preloader -->
+<!-- /PreLoader -->
 
 <!-- Navbar -->
 <nav class="navbar-youplay navbar navbar-default">
 
     <%@include file="../include/menu.jsp"%>                             <!-- INCLUDE -->
-
 </nav>
-<!-- /Navbar -->
+<!-- Navbar -->
 
 <div>
-
     <div class="wrapper">
-        <a href="businessForm?page=businessForm">
-            <button class="button btn btn-success" style="font-size: 25px;">Add New Data</button></a>
+        <a href="#">
+            <button class="button btn btn-success" style="font-size: 25px;">Total Scores</button></a>
     </div>
+
     <table class="tcontainer">
-        <tr style="font-size: 30px;color: #fffc15;">
-            <th>Username</th>
-            <th>Password</th>
-            <th>Address</th>
-            <th>Established Date</th>
-            <th>Gross Income</th>
-            <th>Edit</th>
-            <th>Delete</th>
+        <tr style="font-size: 42px;color: #fffc15;">
+            <th>ID</th>
+            <th>Name</th>
+            <th>Score</th>
         </tr>
-        <c:forEach items="${businessList}" var="business">
-            <tr style="font-size: 19px;">
-                <td>${business.name}</td>                   
-                <td>${business.password}</td>                   
-                <td>${business.address}</td>
-                <td>${business.established_date}</td>
-                <td>${business.gross_income}</td>                   
-                <td><a href="editBusiness?page=edit&id=${business.id}">Edit</a></td>                   
-                <td><a href="deleteBusiness?page=delete&id=${business.id}" onclick="return confirm('Are you Sure');">Delete</a></td>
-            </tr>
+
+        <c:forEach items="${scoreList}" var="score">
+
+                    <tr style="font-size: 28px;">
+                        <td>${score.id}</td>
+                        <td>${score.name}</td>
+                        <td>${score.score}</td>
+                    </tr>
+
         </c:forEach>
     </table>
-
+    <br>
 </div>
 
 <!-- jQuery -->
@@ -173,3 +182,6 @@ Copyright 2016.
 
 </body>
 </html>
+
+
+

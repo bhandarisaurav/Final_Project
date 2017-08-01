@@ -55,6 +55,10 @@
             white-space: nowrap;
         }
 
+        h2{
+            padding-bottom: 0.5em;
+        }
+
 
     </style>
 
