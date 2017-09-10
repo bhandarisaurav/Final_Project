@@ -32,11 +32,11 @@
 
 
             <li>
-                <a href="getQuestion?page=quiz&id=0" style="font-size: 24px;">Play<span class="label">Quiz</span></a>
+                <a href="getQuestion?page=quiz&id=0" style="font-size: 23px;">Play<span class="label">Quiz</span></a>
             </li>
 
             <li>
-                <a href="getScore?page=score" style="font-size: 23.5px;">Scores</a>
+                <a href="getScore?page=score" style="font-size: 23px;">Scores</a>
             </li>
 
         </ul>
@@ -45,14 +45,14 @@
         <ul class="nav navbar-nav navbar-right">
 
             <li>
-                <a href="#!" style="font-size: 25px; color: #ff7b28;">Hello ${sessionScope.user.name}</a>
+                <a href="#!" style="font-size: 20px; color: #ff7b28;">Hello ${sessionScope.user.name}</a>
                     <%--<span class="badge bg-default">529</span>--%>
 
                     <%--<span class="label" style="font-size: 16px;">Deerwalk Institute of Technology</span>--%>
             </li>
 
             <li>
-                <a href="logout?page=logout" style="font-size: 20px;">Logout <i class="fa fa-sign-out" aria-hidden="true"></i></a>
+                <a href="logout?page=logout" style="font-size: 17px;">Logout <i class="fa fa-sign-out fa-1" aria-hidden="true"></i></a>
             </li>
 
         </ul>

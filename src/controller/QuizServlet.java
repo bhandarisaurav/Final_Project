@@ -36,8 +36,9 @@ public class QuizServlet extends HttpServlet {
         if (page.equalsIgnoreCase("quiz")) {
 
             int id = Integer.parseInt(request.getParameter("id"));
-            int marks = 0;
             if (id == 0) {
+                QuizService quizService = new QuizService();
+                quizService.deleteData();
                 getQuestion(request, response, id);
             }else{
                 String correct = request.getParameter("correct");

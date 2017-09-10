@@ -96,12 +96,13 @@
             <div id="question">
                 <h2>${question.question}</h2>
 
-                <input id="choices-1" type="radio" name="option" value="${question.option1}" onClick="document.getElementById('subutton').disabled = false" >
-                <label for="choices-1">${question.option1}</label><input id="choices-2" type="radio" name="option" value="${question.option2}" onClick="document.getElementById('subutton').disabled = false" ><label for="choices-2">${question.option2}</label>
-                <input id="choices-3" type="radio" name="option" value="${question.option3}" onClick="document.getElementById('subutton').disabled = false" >
-                <label for="choices-3">${question.option3}</label><input id="choices-4" type="radio" name="option" value="${question.option4}" onClick="document.getElementById('subutton').disabled = false" ><label for="choices-4">${question.option4}</label>
+                <input id="choices-1" type="radio" name="option" value="${question.option1}" required >
+                <label for="choices-1">${question.option1}</label><input id="choices-2" type="radio" name="option" value="${question.option2}" required ><label for="choices-2">${question.option2}</label>
+                <input id="choices-3" type="radio" name="option" value="${question.option3}" required >
+                <label for="choices-3">${question.option3}</label><input id="choices-4" type="radio" name="option" value="${question.option4}" required ><label for="choices-4">${question.option4}</label>
 
             </div>
+            <br>
 
             <input id = "subutton" class="butn" type="submit" value="Next">
 
